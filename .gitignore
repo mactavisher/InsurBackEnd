@@ -20,18 +20,25 @@ temp/
 *.tar.gz
 *.rar
 
+**/*.jar
+**/*.war
+**/*.ear
+**/*.zip
+**/*.tar.gz
+**/*.rar
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
 
 # maven ignore
 target/
-*.jar
-*.war
-*.ear
-*.zip
-*.tar
-*.tar.gz
+**/*.jar
+**/.war
+**/*.ear
+**/*.zip
+**/*.tar
+**/*.tar.gz
 
 # eclipse ignore
 .settings/
@@ -44,6 +51,10 @@ target/
 *.ipr
 *.iml
 *.iws
+
+**/*.ipr
+**/*.iml
+**/*.iws
 
 # logs #
 logs
