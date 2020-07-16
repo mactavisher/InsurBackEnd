@@ -1,25 +1,18 @@
 # Compiled class file
-*.class
+**/*.class
 
 # Log file
-*.log
-log/
-temp/
+**/*.log
+**/log/
+**/temp/
 
 # BlueJ files
-*.ctxt
+**/*.ctxt
 
 # Mobile Tools for Java (J2ME)
-.mtj.tmp/
+**/.mtj.tmp/
 
 # Package Files #
-*.jar
-*.war
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
 **/*.jar
 **/*.war
 **/*.ear
@@ -41,16 +34,13 @@ target/
 **/*.tar.gz
 
 # eclipse ignore
-.settings/
-.project
-.classpath
-.factorypath
+**/.settings/
+**/.project
+**/.classpath
+**/.factorypath
 
 # idea ignore
-.idea/
-*.ipr
-*.iml
-*.iws
+**/.idea/
 
 **/*.ipr
 **/*.iml
@@ -60,14 +50,14 @@ target/
 logs
 
 # temp ignore
-*.log
-*.cache
-*.diff
-*.patch
-*.tmp
-*.java~
-*.properties~
-*.xml~
+**/*.log
+**/*.cache
+**/*.diff
+**/*.patch
+**/*.tmp
+**/*.java~
+**/*.properties~
+**/*.xml~
 
 # system ignore
 .DS_Store
