@@ -1,19 +1,20 @@
 package com.insurgency.common.utils;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * validation utils
  *
  * @author Lynx
- * @data 2020/03/21
+ * @since 2020/03/21
  */
-public class RegxMatchingUtil {
+@SuppressWarnings("unused")
+public final class RegxMatchingUtil {
 
     // make non-instantiate ability
     private RegxMatchingUtil() {
@@ -27,15 +28,12 @@ public class RegxMatchingUtil {
     /**
      * 特殊字符 special character sequence regx
      */
-    private static final String SPECIAL_CHAR_SEQUENCE = "`%\\^|\\{\\};<>！￥%……*（）——|【】‘；：”“’。，、？|\n|\r|\t";
-    // private static final String SPECIAL_CHAR_SEQUENCE = "[
-    // _`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]|\n|\r|\t";
+    private static final String SPECIAL_CHAR_SEQUENCE = "[ _`~!@#$%^&*()+=|':;,\\[\\].<>/?！￥…（）—{}【】‘；：”“’。，、？]|\n|\r|\t";
 
     /**
      * 中文字符 chines character sequence regx
      */
-    private static final String CHINESE_CHAR_SEQUENCE =
-            "[\u4E00-\u9FA5|\\！|\\，|\\。|\\（|\\）|\\《|\\》|\\“|\\”|\\？|\\：|\\；|\\【|\\】]";
+    private static final String CHINESE_CHAR_SEQUENCE = "[\u4E00-\u9FA5|！，。（）《》“”？：；【】]";
 
     /**
      * 数字 number character sequence regx
@@ -76,9 +74,8 @@ public class RegxMatchingUtil {
      * 判断是否为数字（包括小数）
      *
      * @param str
-     * @return
-     * @author LeoSong
-     * @date 2019/07/08
+     * @return 校验结果
+     * @since 2019/07/08
      */
     public static boolean isNumeric(String str) {
         if (StringUtils.isBlank(str)) {
@@ -94,11 +91,5 @@ public class RegxMatchingUtil {
         } else {
             return pattern.matcher(str).matches();
         }
-    }
-
-    public static void main(String[] args) {
-        String string = "#";
-        String string2 = "~!@#$&*()-=\\:\",./?'";
-        // System.out.println(isContainsSpecialChar(string2));
     }
 }

@@ -13,13 +13,15 @@ import java.util.*;
  * 时间转换工具类
  *
  * @author Lynx
- *
- * @date 2020/03/21
+ * @since 2020/03/21
  */
-public class DateUtil {
+
+@SuppressWarnings("unused")
+public final class DateUtil {
 
     // make non-instantiate ability
-    private DateUtil() {}
+    private DateUtil() {
+    }
 
     public static final String DATE_TIME_PATTERN = "yyyy-MM-dd HH:mm:ss";
     public static final String DATE_PATTERN = "yyyy-MM-dd";
@@ -39,7 +41,9 @@ public class DateUtil {
     /**
      * 日期转化为指定日期格式类型
      *
-     * @param pattern--日期格式类型，如yyyy-MM-dd
+     * @param date    date
+     * @param pattern 格式
+     * @return 转换后的日期
      */
     public static String dateToString(Date date, String pattern) {
         SimpleDateFormat sdf = new SimpleDateFormat(pattern, Locale.CHINA);// 日期格式
@@ -49,10 +53,8 @@ public class DateUtil {
     /**
      * 日期字符串转化为指定日期格式类型
      *
-     * @param dateStr
-     *            日期字符串
-     * @param pattern
-     *            日期格式类型，如yyyy-MM-dd
+     * @param dateStr 日期字符串
+     * @param pattern 日期格式类型，如yyyy-MM-dd
      */
     public static Date stringToDate(String dateStr, String pattern) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat(pattern);// 日期格式
@@ -62,14 +64,14 @@ public class DateUtil {
     /**
      * 计算两个日期之间的天数差
      *
-     * @param beginDateString
-     * @param endDateString
-     * @param datePattern
-     * @return
-     * @throws ParseException
+     * @param beginDateString 开始日期
+     * @param endDateString   结束日期
+     * @param datePattern     日期格式
+     * @return 时间天数差
+     * @throws ParseException 抛出转换异常
      */
     public static int calculateDateOffSet(String beginDateString, String endDateString, String datePattern)
-        throws ParseException {
+            throws ParseException {
         Date dateBegin = stringToDate(beginDateString, datePattern);
         Date dateEnd = stringToDate(endDateString, datePattern);
         return calculateDateOffSet(dateBegin, dateEnd);
@@ -78,20 +80,20 @@ public class DateUtil {
     /**
      * 计算两个日期之间的天数差
      *
-     * @param beginDate
-     * @param endDate
-     * @return
+     * @param beginDate 开始日期
+     * @param endDate   结束日期
+     * @return 时间天数差
      */
     public static int calculateDateOffSet(Date beginDate, Date endDate) {
         long offSet = (endDate.getTime() - beginDate.getTime()) / (60 * 60 * 24 * 1000);
-        return Math.abs(Integer.valueOf(String.valueOf(offSet)));
+        return Math.abs(Integer.parseInt(String.valueOf(offSet)));
     }
 
     /**
      * 获取当前时区的时间String
      *
-     * @param pattern
-     * @return
+     * @param pattern 格式
+     * @return 时间 String
      */
     public static String getToday(String pattern) {
         return getToday(pattern, SHANGHAI_ZONE);
@@ -100,8 +102,8 @@ public class DateUtil {
     /**
      * 获取指定时区的时间String
      *
-     * @param pattern
-     * @return
+     * @param pattern 格式
+     * @return 时间 string
      */
     public static String getToday(String pattern, ZoneId zoneId) {
         LocalDateTime nowDateTime = LocalDateTime.now(zoneId);
@@ -111,7 +113,7 @@ public class DateUtil {
     /**
      * 获得今天日期时间Date
      *
-     * @return
+     * @return 今天日期时间
      */
     public static Date getTodayDate() {
         LocalDateTime now = LocalDateTime.now(SHANGHAI_ZONE);
@@ -121,7 +123,7 @@ public class DateUtil {
     /**
      * 获取今日日期LocalDateTime
      *
-     * @return
+     * @return 今日日期
      */
     public static LocalDateTime getTodayLocalDateTime() {
         return LocalDateTime.now(SHANGHAI_ZONE);
@@ -130,7 +132,7 @@ public class DateUtil {
     /**
      * 获取今日日期LocalDate
      *
-     * @return
+     * @return 今日日期LocalDate
      */
     public static LocalDate getTodayLocalDate() {
         return LocalDate.now(SHANGHAI_ZONE);
@@ -139,7 +141,7 @@ public class DateUtil {
     /**
      * 获得指定时区日期LocalDateTime
      *
-     * @return
+     * @return 指定时区日期
      */
     public static LocalDateTime getTodayLocalDateTime(ZoneId zoneId) {
         return LocalDateTime.now(zoneId);
@@ -148,13 +150,10 @@ public class DateUtil {
     /**
      * 比较时间间隔，time1+space <= time2
      *
-     * @param time1
-     *            格式 09：00
-     * @param time2
-     *            格式 12：00
-     * @param minutes
-     *            格式 120
-     * @return
+     * @param time1   格式 09：00
+     * @param time2   格式 12：00
+     * @param minutes 格式 120
+     * @return 时间间隔
      */
     public static boolean compareTimeSpace(String time1, String time2, int minutes) {
         LocalTime timeA = LocalTime.parse(time1).plusMinutes(minutes);
@@ -165,10 +164,9 @@ public class DateUtil {
     /**
      * 时间加减小时
      *
-     * @param startDate
-     *            要处理的时间
-     * @param minutes
-     *            加减的分钟
+     * @param startDate 要处理的时间
+     * @param minutes   加减的分钟
+     * @return 加减后的的日期 Date
      */
     public static Date dateAddHours(Date startDate, int minutes) {
         LocalDateTime localDateTime = parseDateToLocalDateTime(startDate);
@@ -186,10 +184,8 @@ public class DateUtil {
     /**
      * 天加减小时
      *
-     * @param startDate
-     *            要处理的时间
-     * @param days
-     *            加减的天数
+     * @param startDate 要处理的时间
+     * @param days      加减的天数
      */
     public static Date dateAddDays(Date startDate, int days) {
         LocalDateTime localDateTime = parseDateToLocalDateTime(startDate);
@@ -205,10 +201,8 @@ public class DateUtil {
     /**
      * 计算开始和结束时间的时间差，返回秒为单位
      *
-     * @param startTime
-     *            开始时间，可用currentTimeMillis
-     * @param endTime
-     *            结束时间，可用currentTimeMillis
+     * @param startTime 开始时间，可用currentTimeMillis
+     * @param endTime   结束时间，可用currentTimeMillis
      * @return 相差时间：秒
      * @date : 2019-06-24 13:03
      * @author : LeoSong
@@ -220,10 +214,8 @@ public class DateUtil {
     /**
      * 计算两个时间间隔为半小时的中间时间
      *
-     * @param startTime
-     *            开始时间HH:mm，必须半小时为整数
-     * @param endTime
-     *            结束时间HH:mm，必须半小时为整数
+     * @param startTime 开始时间HH:mm，必须半小时为整数
+     * @param endTime   结束时间HH:mm，必须半小时为整数
      * @return 示例：["12:00", "12:30", "13:00", "13:30"]
      * @throws ParseException
      * @date : 2019-06-27 16:28
@@ -249,8 +241,7 @@ public class DateUtil {
     /**
      * 拆解为格式化时间
      *
-     * @param time
-     *            "0900"
+     * @param time "0900"
      * @return
      */
     public static String getSimpleTime(String time) throws ParseException {
@@ -260,8 +251,7 @@ public class DateUtil {
     /**
      * 向下半小时取整
      *
-     * @param localTime
-     *            格式0910
+     * @param localTime 格式0910
      * @return
      */
     public static String getDateHalfHourRound(String localTime) {
