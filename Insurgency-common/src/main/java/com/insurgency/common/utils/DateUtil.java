@@ -204,8 +204,6 @@ public final class DateUtil {
      * @param startTime 开始时间，可用currentTimeMillis
      * @param endTime   结束时间，可用currentTimeMillis
      * @return 相差时间：秒
-     * @date : 2019-06-24 13:03
-     * @author : LeoSong
      */
     public static float computeTimeDifference(long startTime, long endTime) {
         return (endTime - startTime) / 1000F;

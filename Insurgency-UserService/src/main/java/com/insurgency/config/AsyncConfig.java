@@ -16,10 +16,11 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
  * 根据系统配置来配置一个线程池，是单例的，整个app生命周期只有一个
  *
  * @author Lynx
- * @date 2019/06/24
+ * @since 2019/06/24
  */
 @Configuration
 @EnableAsync
+@SuppressWarnings("unused")
 public final class AsyncConfig implements AsyncConfigurer {
 
     /**
