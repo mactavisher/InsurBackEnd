@@ -1,4 +1,4 @@
-package com.insurgency.common.utils;
+package org.insurgency.common.utils;
 
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.config.DataSourceConfig;

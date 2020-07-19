@@ -11,6 +11,7 @@
     <modules>
         <module>Insurgency-UserService</module>
         <module>Insurgency-common</module>
+        <module>Insurgency-dao</module>
     </modules>
 
     <properties>

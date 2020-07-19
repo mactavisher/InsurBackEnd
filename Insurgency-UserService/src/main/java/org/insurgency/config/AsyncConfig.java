@@ -1,4 +1,4 @@
-package com.insurgency.config;
+package org.insurgency.config;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadPoolExecutor;

@@ -1,4 +1,4 @@
-package com.insurgency.dao.entity;
+package org.insuergency.dao.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -40,6 +40,12 @@ public class User extends Model<User> {
      */
     @TableField("nick_name")
     private String nickName;
+
+    /**
+     * password
+     */
+    @TableField("password")
+    private String password;
 
     /**
      * is an active user
@@ -137,6 +143,14 @@ public class User extends Model<User> {
 
     public void setUpdateBy(String updateBy) {
         this.updateBy = updateBy;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

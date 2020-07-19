@@ -1,4 +1,4 @@
-package com.insurgency.common.utils;
+package org.insurgency.common.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
