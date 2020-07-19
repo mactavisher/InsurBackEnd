@@ -17,8 +17,7 @@ import java.util.regex.Pattern;
 public final class RegxMatchingUtil {
 
     // make non-instantiate ability
-    private RegxMatchingUtil() {
-    }
+    private RegxMatchingUtil() {}
 
     /**
      * output log 打印日志
@@ -28,7 +27,8 @@ public final class RegxMatchingUtil {
     /**
      * 特殊字符 special character sequence regx
      */
-    private static final String SPECIAL_CHAR_SEQUENCE = "[ _`~!@#$%^&*()+=|':;,\\[\\].<>/?！￥…（）—{}【】‘；：”“’。，、？]|\n|\r|\t";
+    private static final String SPECIAL_CHAR_SEQUENCE =
+        "[ _`~!@#$%^&*()+=|':;,\\[\\].<>/?！￥…（）—{}【】‘；：”“’。，、？]|\n|\r|\t";
 
     /**
      * 中文字符 chines character sequence regx
@@ -45,7 +45,8 @@ public final class RegxMatchingUtil {
      * <p>
      * 后端校验是否位特殊字符，将其过滤掉
      *
-     * @param stringToValidate String
+     * @param stringToValidate
+     *            String
      * @return boolean
      */
     public static boolean isContainsSpecialChar(String stringToValidate) {
@@ -58,7 +59,8 @@ public final class RegxMatchingUtil {
     /**
      * validate if a string contains Chinese character, Chinese Characters is not allowed in ups
      *
-     * @param stringToValidate String
+     * @param stringToValidate
+     *            String
      * @return boolean
      */
     public static boolean isContainChinese(String stringToValidate) {
@@ -74,6 +76,7 @@ public final class RegxMatchingUtil {
      * 判断是否为数字（包括小数）
      *
      * @param str
+     *            待校验的字符串
      * @return 校验结果
      * @since 2019/07/08
      */

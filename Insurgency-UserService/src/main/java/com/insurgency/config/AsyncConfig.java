@@ -21,7 +21,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 @Configuration
 @EnableAsync
 @SuppressWarnings("unused")
-public final class AsyncConfig implements AsyncConfigurer {
+public class AsyncConfig implements AsyncConfigurer {
 
     /**
      * logger 打印日志 output log

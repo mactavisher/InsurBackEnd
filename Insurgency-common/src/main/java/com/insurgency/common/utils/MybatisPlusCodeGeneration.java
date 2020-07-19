@@ -12,7 +12,7 @@ import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
  * mybatis代码生成器
  *
  * @author lynx
- * @date 2020/03/23
+ * @since 2020/03/23
  */
 public class MybatisPlusCodeGeneration {
     public static void main(String[] args) {
