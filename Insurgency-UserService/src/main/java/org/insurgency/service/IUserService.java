@@ -2,7 +2,7 @@ package org.insurgency.service;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.insuergency.dao.entity.User;
+import org.insurgency.dao.entity.User;
 import org.insurgency.forms.UserForm;
 import org.springframework.http.ResponseEntity;
 

@@ -1,85 +1,58 @@
-package org.insuergency.dao.entity;
+package org.insurgency.dao.dto;
 
 import java.io.Serializable;
 import java.util.Date;
 
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableName;
-import com.baomidou.mybatisplus.enums.IdType;
-
 /**
- * <p>
- * user 关系映射表
- * </p>
- *
+ * DTO for our user
+ * 
  * @author Lynx
- * @since 2020-07-16
+ * 
+ * @since 2020/07/19
  */
-@TableName("t_user")
-@SuppressWarnings("unused")
-public class User extends Model<User> {
 
-    private static final long serialVersionUID = 1L;
+@SuppressWarnings("unused")
+public class UserDTO implements Serializable {
 
     /**
      * primary key
      */
-    @TableId(type = IdType.ID_WORKER)
     public Long id;
 
     /**
      * user name
      */
-    @TableField("user_name")
     private String userName;
 
     /**
      * nick name
      */
-    @TableField("nick_name")
     private String nickName;
-
-    /**
-     * password
-     */
-    @TableField("password")
-    private String password;
 
     /**
      * is an active user
      */
-    @TableField("is_active")
     private Integer isActive;
 
     /**
      * create by
      */
-    @TableField("create_by")
     private String createBy;
 
     /**
      * create time
      */
-    @TableField("create_time")
     private Date createTime;
 
     /**
      * update time
      */
-    @TableField("update_time")
     private Date updateTime;
 
     /**
      * update by
      */
-    @TableField("update_by")
     private String updateBy;
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 
     public Long getId() {
         return id;
@@ -143,18 +116,5 @@ public class User extends Model<User> {
 
     public void setUpdateBy(String updateBy) {
         this.updateBy = updateBy;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Override
-    protected Serializable pkVal() {
-        return null;
     }
 }

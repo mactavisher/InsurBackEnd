@@ -2,8 +2,8 @@ package org.insurgency.service.impl;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.insuergency.dao.entity.User;
-import org.insuergency.dao.mapper.UserMapper;
+import org.insurgency.dao.entity.User;
+import org.insurgency.dao.mapper.UserMapper;
 import org.insurgency.forms.UserForm;
 import org.insurgency.service.IUserService;
 import org.slf4j.Logger;
