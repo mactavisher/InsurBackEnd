@@ -1,6 +1,7 @@
 package org.insurgency.config;
 
 import java.util.concurrent.Executor;
+import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.ThreadPoolExecutor;
 
 import org.slf4j.Logger;
@@ -36,7 +37,7 @@ public class AsyncConfig implements AsyncConfigurer {
     /**
      * 核心线程数 根据cpu的个数啦动态配置最大的核心线程数 最优的最大核心线程数的公式为 cpu_count+1 CPU核数/（1-阻系数） 阻塞系数在0.8~0.9之间
      */
-    private static final int CORE_POOL_SIZE = (int)(CPU_COUNT / (1 - 0.8)) + 1;
+    private static final int CORE_POOL_SIZE = (int) (CPU_COUNT / (1 - 0.8)) + 1;
 
     /**
      * 最大线程数 根据cup的个数来动态配置最大的线程数 最优的最大线程数的公式为 cpu_count*2+1
@@ -75,7 +76,7 @@ public class AsyncConfig implements AsyncConfigurer {
         executor.setThreadNamePrefix("async-thread-");
         // rejection-policy：当pool和等待池已经达到max size的时候，如何处理这时想添加进来的新任务
         // 使用拒绝执行策略
-        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.AbortPolicy());
+        executor.setRejectedExecutionHandler(new ThisAbortPolicy());
         // 等待所有任务结束后再关闭线程池
         executor.setWaitForTasksToCompleteOnShutdown(true);
         // 超时强行销毁
@@ -84,6 +85,17 @@ public class AsyncConfig implements AsyncConfigurer {
         executor.initialize();
         logger.info("*********               线程池初始化完成!               *********/");
         return executor;
+    }
+
+    final static class ThisAbortPolicy extends ThreadPoolExecutor.AbortPolicy {
+        @Override
+        public void rejectedExecution(Runnable r, ThreadPoolExecutor e) {
+            try {
+                super.rejectedExecution(r, e);
+            } catch (RejectedExecutionException executionException) {
+                logger.warn(executionException.getMessage());
+            }
+        }
     }
 
     @Override
