@@ -1,8 +1,4 @@
-package org.insurgency.config;
-
-import java.util.concurrent.Executor;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.ThreadPoolExecutor;
+package org.insurgency.application.sys.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +8,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+
+import java.util.concurrent.Executor;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * 根据系统配置来配置一个线程池，是单例的，整个app生命周期只有一个
@@ -87,6 +87,11 @@ public class AsyncConfig implements AsyncConfigurer {
         return executor;
     }
 
+    @Override
+    public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
+        return null;
+    }
+
     final static class ThisAbortPolicy extends ThreadPoolExecutor.AbortPolicy {
         @Override
         public void rejectedExecution(Runnable r, ThreadPoolExecutor e) {
@@ -96,11 +101,6 @@ public class AsyncConfig implements AsyncConfigurer {
                 logger.warn(executionException.getMessage());
             }
         }
-    }
-
-    @Override
-    public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
-        return null;
     }
 
 }

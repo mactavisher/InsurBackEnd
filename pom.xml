@@ -9,9 +9,12 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>Insurgency-UserService</module>
+        <module>Insurgency-core</module>
         <module>Insurgency-common</module>
-        <module>Insurgency-dao</module>
+        <module>Insurgency-dal</module>
+        <module>Insurgency-domain</module>
+        <module>Insurgency-api</module>
+        <module>insurgency-application</module>
     </modules>
 
     <properties>

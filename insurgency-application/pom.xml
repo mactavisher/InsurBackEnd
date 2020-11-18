@@ -9,12 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>UserService</artifactId>
+    <artifactId>insurgency-application</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>org.insurgency</groupId>
-            <artifactId>Insurgency-dao</artifactId>
+            <artifactId>Insurgency-core</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

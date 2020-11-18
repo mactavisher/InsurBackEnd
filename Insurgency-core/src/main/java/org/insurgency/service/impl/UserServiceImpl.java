@@ -8,6 +8,9 @@ import org.insurgency.forms.UserForm;
 import org.insurgency.service.IUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -24,7 +27,7 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
  */
 @SuppressWarnings("unused")
 @Service
-public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService, InitializingBean {
 
     /**
      * logger
@@ -35,5 +38,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     public ResponseEntity<String> userRegister(HttpServletRequest request, UserForm form) {
         log.info("*************accept user{} register request", form.getUserName());
         return new ResponseEntity<>("register response", HttpStatus.ACCEPTED);
+    }
+
+    public UserServiceImpl (){
+        log.info("*************UserService Initiated************");
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        log.info("*************UserService Initiated************");
     }
 }
